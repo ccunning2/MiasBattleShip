@@ -1,8 +1,12 @@
 package bs.view;
 
 
+import java.util.Random;
+
 import javafx.geometry.Pos;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.TilePane;
+import javafx.scene.paint.Color;
 /**
  * Creates a board. Size is 520x520
  * @author cameroncunning1
@@ -31,13 +35,55 @@ public class Board extends TilePane {
 		this.setTileAlignment(Pos.CENTER);
 		for (int i=0; i<10; i++){ //Instantiate each tile and add to Board
 			for (int j=0; j<10; j++){
-				seaScape[i][j] = new BoardTile();
+				seaScape[i][j] = new BoardTile(i,j);
 				this.getChildren().add(seaScape[i][j]);
 			}
 		}
 		
 	}
 	
+	public void placeShip() {
+		//Need to get current BoardTile on mouse over
+		for (BoardTile[] b : seaScape){
+			for (BoardTile c : b) {
+				c.setOnMouseEntered(e -> mouseInPlacingShips(e));
+				c.setOnMouseExited(e -> mouseOutPlacingShips(e));
+			}
+		}
+		
+		
+		}
+
+	private void mouseOutPlacingShips(MouseEvent e) {
+		BoardTile current = (BoardTile) e.getSource();
+		current.setFill(Color.TRANSPARENT);
+	}
+
+	private void mouseInPlacingShips(MouseEvent e) {
+		BoardTile current = (BoardTile) e.getSource();
+		current.setFill(Color.SPRINGGREEN);
+		System.out.println("X: " + current.getArrayX() + "Y: " + current.getArrayY());
+	}
+	
+	
+	/**
+	 * Just for fun!
+	 * @param min
+	 * @param max
+	 * @return
+	 */
+	public static int randInt(int min, int max) {
+
+	    // NOTE: Usually this should be a field rather than a method
+	    // variable so that it is not re-seeded every call.
+	    Random rand = new Random();
+
+	    // nextInt is normally exclusive of the top value,
+	    // so add 1 to make it inclusive
+	    int randomNum = rand.nextInt((max - min) + 1) + min;
+
+	    return randomNum;
+	}
 	
 
 }
