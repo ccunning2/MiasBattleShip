@@ -1,8 +1,6 @@
 package bs.view;
 
 
-import java.util.Random;
-
 import javafx.geometry.Pos;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.TilePane;
@@ -42,48 +40,71 @@ public class Board extends TilePane {
 		
 	}
 	
-	public void placeShip() {
+	public void placeShips(int[] shipSizes) {
+		
+	}
+	
+	public void placeShip(int shipSize) {
 		//Need to get current BoardTile on mouse over
 		for (BoardTile[] b : seaScape){
 			for (BoardTile c : b) {
-				c.setOnMouseEntered(e -> mouseInPlacingShips(e));
-				c.setOnMouseExited(e -> mouseOutPlacingShips(e));
+				c.setOnMouseEntered(e -> mouseInPlacingShips(e, shipSize));
+				c.setOnMouseExited(e -> mouseOutPlacingShips(e, shipSize));
+				c.setOnMouseClicked(e -> createShip(e, shipSize));
 			}
 		}
-		
-		
+	
 		}
 
-	private void mouseOutPlacingShips(MouseEvent e) {
-		BoardTile current = (BoardTile) e.getSource();
-		current.setFill(Color.TRANSPARENT);
+	private Object createShip(MouseEvent e, int shipSize) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
-	private void mouseInPlacingShips(MouseEvent e) {
+	private void mouseOutPlacingShips(MouseEvent e, int shipSize) {
 		BoardTile current = (BoardTile) e.getSource();
-		current.setFill(Color.SPRINGGREEN);
-		System.out.println("X: " + current.getArrayX() + "Y: " + current.getArrayY());
+		int i = current.getArrayX();
+		int j = current.getArrayY();
+
+		
+		//Clear entire row
+		for(int k=0; k<seaScape[0].length; k++){
+			seaScape[i][k].setFill(Color.TRANSPARENT);
+		}
+	}
+
+	private void mouseInPlacingShips(MouseEvent e, int shipSize) {
+		BoardTile current = (BoardTile) e.getSource();
+//		c.setOnMouseExited(e -> mouseOutPlacingShips(e, shipSize));
+		
+		
+		int maxTile = seaScape[0].length - shipSize;
+		
+		int i = current.getArrayX();
+		int j = current.getArrayY();
+		
+
+		int x = j;
+		if (x > maxTile) {
+			for (int k = maxTile; k<seaScape[0].length; k++){
+				seaScape[i][k].setFill(Color.SPRINGGREEN);
+			}
+		} else {
+		while (x < seaScape[0].length && x < (j + shipSize) ){
+			seaScape[i][x].setFill(Color.SPRINGGREEN);
+			x++;
+		}
+		}
+
 	}
 	
+
 	
-	/**
-	 * Just for fun!
-	 * @param min
-	 * @param max
-	 * @return
-	 */
-	public static int randInt(int min, int max) {
+	
 
-	    // NOTE: Usually this should be a field rather than a method
-	    // variable so that it is not re-seeded every call.
-	    Random rand = new Random();
+	
+	
 
-	    // nextInt is normally exclusive of the top value,
-	    // so add 1 to make it inclusive
-	    int randomNum = rand.nextInt((max - min) + 1) + min;
-
-	    return randomNum;
-	}
 	
 
 }

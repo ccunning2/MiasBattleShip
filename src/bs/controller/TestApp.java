@@ -1,9 +1,11 @@
-package bs.view;
+package bs.controller;
 
 import javafx.application.Application;
 import javafx.scene.Scene;
+import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import bs.model.Player;
+import bs.view.Board;
 
 public class TestApp extends Application {
 
@@ -19,12 +21,16 @@ public class TestApp extends Application {
 //		System.out.println("Height: " +scene.getHeight() + " Width: " + scene.getWidth());
 
 		Player one = new Player();
-		Board root = one.getBoard();
+		Board oneBoard = one.getBoard();
+		BorderPane root = new BorderPane(oneBoard);
 		Scene scene = new Scene(root);
 		primaryStage.setScene(scene);
 		primaryStage.sizeToScene();
 		primaryStage.show();
-		one.placeShip(1);
+		int[] shipSizes = {5,4,3,3,2};
+		one.placeShip(2);
+		
+		
 		
 	}
 
