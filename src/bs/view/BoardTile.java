@@ -13,6 +13,9 @@ public class BoardTile extends Rectangle {
 	private int arrayX;
 	private int arrayY;
 	
+	//Boolean to represent whether tile is part of ship
+	private boolean ship = false;
+	
 	public int getArrayX() {
 		return arrayX;
 	}
@@ -47,11 +50,19 @@ public class BoardTile extends Rectangle {
 		
 		
 	}
-	
-	
-	public void makeRed() {
-		this.setFill(Color.RED);
+
+
+	public boolean isShip() {
+		return ship;
 	}
+
+
+	public void setShip(boolean ship) {
+		this.ship = ship;
+	}
+	
+	
+	
 	
 	
 

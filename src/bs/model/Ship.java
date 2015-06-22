@@ -18,7 +18,16 @@ public class Ship {
 	
 	
 	
-	public Ship(ArrayList<BoardTile> tiles) {
+	public Ship(ArrayList<BoardTile> tiles) throws ShipCreationException {
+		
+		for(BoardTile t: tiles){
+			if (t.isShip()){
+				throw new ShipCreationException();
+			}
+		}
+		for(BoardTile t: tiles){
+			t.setShip(true);
+		}
 		this.tiles = tiles;
 	}
 	
