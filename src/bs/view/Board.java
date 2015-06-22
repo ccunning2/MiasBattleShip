@@ -51,6 +51,7 @@ public class Board extends TilePane {
 				this.getChildren().add(seaScape[i][j]);
 			}
 		}
+		this.setStyle("-fx-background-image: url('resources/images/ship.jpg');");
 //		this.setOnKeyTyped(e -> handleSpace(e));
 		
 	}

@@ -8,6 +8,7 @@ import javafx.application.Application;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
@@ -15,20 +16,29 @@ import bs.model.Player;
 import bs.view.Board;
 
 public class Main extends Application {
-
+	
+	
+	Player one = new Player();
+	Player two = new Player();
+	Board onePlaceBoard = one.getBoard();
+	Board twoPLaceBoard = two.getBoard();
+	Stage primaryStage;
+	Player current = one;
+	
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 
-		Player one = new Player();
-		Board oneBoard = one.getBoard();
+		
 		ArrayList<Integer> shipSizes = new ArrayList<>();
 		
 		//Add a rotate button to rotate the ships
 		HBox bottom = new HBox();
 		Button rotate = new Button("Rotate");
-		bottom.getChildren().add(rotate);
+		Label status = new Label("Player 1 Place Your Ships");
+		bottom.setSpacing(80);
+		bottom.getChildren().addAll(status, rotate);
 		
-		rotate.setOnAction(e -> rotate(oneBoard));
+		rotate.setOnAction(e -> rotate(onePlaceBoard));
 		
 		
 		//Add the sizes of ships we want to play with
@@ -40,7 +50,7 @@ public class Main extends Application {
 		
 		//TODO Skin the App/rotate button with CSS
 		
-		BorderPane root = new BorderPane(oneBoard);
+		BorderPane root = new BorderPane(onePlaceBoard);
 		root.setBottom(bottom);
 		bottom.setAlignment(Pos.CENTER);
 		
@@ -66,8 +76,11 @@ public class Main extends Application {
 	}
 	
 	public static void placeShips(Player player, ArrayList<Integer> shipSizes){
-		//TODO If shipSizes is empty...
+		if (!shipSizes.isEmpty()){
 		player.getBoard().placeShip(shipSizes);
+		} else {
+			
+		}
 	}
 
 }
