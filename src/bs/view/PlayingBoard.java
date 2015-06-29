@@ -1,11 +1,12 @@
 package bs.view;
 
+import bs.controller.Main;
+import bs.model.Player;
+import bs.model.Ship;
 import javafx.geometry.Pos;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.TilePane;
 import javafx.scene.paint.Color;
-import bs.controller.Main;
-import bs.model.Player;
 
 public class PlayingBoard extends TilePane {
 	
@@ -36,14 +37,31 @@ public class PlayingBoard extends TilePane {
 
 	private void guess(MouseEvent e) {
 		BoardTile guess = (BoardTile) e.getSource();
-		if (guess.isShip()){
+		if (guess.isShip()){ //Hit
 			guess.setFill(Color.RED);
+			Ship hitShip = guess.getShip();
+			hitShip.hit(guess);
+			Main.status3.setTextFill(Color.BEIGE);
+			Main.status3.setText("Hit!");
+			Main.bottom.setStyle("-fx-background-color: linear-gradient(to top right, red, crimson, black);");
+			//If the ship has been sunk...
+			if(!hitShip.isAfloat()){
+				Main.status3.setText("Ship Down!");
+				hitShip.getOwner().sinkShip(hitShip);
+				Main.status2.setText("Enemy ships remining: " + hitShip.getOwner().getShips().size());
+				if (hitShip.getOwner().getShips().isEmpty()){
+					Main.gameOver();
+				}
+			}
 			removeListeners();
 			
-		} else {
+		} else { //Miss
 			guess.setFill(Color.YELLOW);
 			removeListeners();
+			Main.status3.setTextFill(Color.YELLOW);
+			Main.status3.setText("Miss!");
 		}
+		Main.rotate.setVisible(true);
 	}
 	
 	private void removeListeners(){
@@ -59,11 +77,14 @@ public class PlayingBoard extends TilePane {
 	public void endTurn() {
 		Main.incrementTurn();
 		addClickListeners();
+		Main.rotate.setVisible(false);
+		Main.status3.setText("");
+		Main.bottom.setStyle("-fx-background-color: linear-gradient(to top right, mediumspringgreen, darkturquoise, black);");
 		Main.ContinuePlay();
 	}
 	
 	private void addClickListeners() {
-		for (int i=0; i<10; i++){ //Instantiate each tile and add to Board
+		for (int i=0; i<10; i++){ 
 			for (int j=0; j<10; j++){
 				seaScape[i][j].setOnMouseClicked(e -> guess(e));
 			}

@@ -1,5 +1,6 @@
 package bs.view;
 
+import bs.model.Ship;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 
@@ -15,7 +16,21 @@ public class BoardTile extends Rectangle {
 	
 	//Boolean to represent whether tile is part of ship
 	private boolean shipPiece = false;
+	private Ship ship = null;
 	
+	
+
+
+	public Ship getShip() {
+		return ship;
+	}
+
+
+	public void setShip(Ship ship) {
+		this.ship = ship;
+	}
+
+
 	public int getArrayX() {
 		return arrayX;
 	}

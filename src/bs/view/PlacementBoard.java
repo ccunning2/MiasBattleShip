@@ -122,7 +122,7 @@ public class PlacementBoard extends TilePane {
 		}
 		
 		try {
-			player.addShip(new Ship(ship));
+			player.addShip(new Ship(ship, player));
 			for (BoardTile t: ship) {
 				t.setFill(Color.DARKSEAGREEN);
 			}

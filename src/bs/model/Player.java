@@ -19,12 +19,17 @@ public class Player {
 	}
 	
 	
-//	public void placeShip(int shipSize) {
-//	board.placeShip(shipSize);
-//		
-//		
-//	}
+
 	
+
+
+	public ArrayList<Ship> getShips() {
+		return ships;
+	}
+
+
+
+
 
 
 	public PlacementBoard getBoard() {
@@ -33,6 +38,10 @@ public class Player {
 	
 	public void addShip(Ship ship) {
 		ships.add(ship);
+	}
+	
+	public void sinkShip(Ship ship){
+		this.ships.remove(ship);
 	}
 	
 	
