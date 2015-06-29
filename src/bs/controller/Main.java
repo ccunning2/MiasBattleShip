@@ -107,7 +107,7 @@ public class Main extends Application {
 		//Create each player's playing board
 		onePlay = new PlayingBoard(twoPlaceBoard, one);
 		twoPlay = new PlayingBoard(onePlaceBoard, two);
-//		bottom.getChildren().remove(rotate);
+
 		rotate.setText("End Turn");
 		
 		ContinuePlay();

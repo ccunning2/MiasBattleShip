@@ -52,7 +52,7 @@ public class PlacementBoard extends TilePane {
 			}
 		}
 		this.setStyle("-fx-background-image: url('resources/images/ship.jpg');");
-//		this.setOnKeyTyped(e -> handleSpace(e));
+
 		
 	}
 	
@@ -80,28 +80,13 @@ public class PlacementBoard extends TilePane {
 				c.setOnMouseExited(e -> mouseOutPlacingShips(e, shipSizes.get(0)));
 				
 				c.setOnMouseClicked(e -> createShip(e, shipSizes));
-				//May add spacebar to rotate functionality at later time
-//				c.setOnKeyTyped(e -> handleSpace(e));
+
 			}
 		}
 	
 		}
 	
-	/**
-	 * Method for adding spacebar to rotate. Currently has "bug" whereby tiles don't clear properly. Could probably
-	 * be fixed with minimal effort.
-	 * @param e
-	 */
-//	private void handleSpace(KeyEvent e) {
-//		
-//		if (e.getCode() == KeyCode.SPACE){
-//			//TODO CLEAR TILES
-//			this.setRotated(!rotated);
-//			
-//		} else {
-//			e.consume();
-//		}
-//	}
+
 
 	private void createShip(MouseEvent e, ArrayList<Integer> shipSizes)  {
 		int shipSize = shipSizes.get(0);
@@ -147,7 +132,7 @@ public class PlacementBoard extends TilePane {
 			
 			//Return to Main, move on to next ship in queue
 			Main.placeShips(shipSizes);
-			//TODO Color in board where ship is, OR fill with image
+			
 		} catch (ShipCreationException e1) {
 		
 			return;
@@ -157,31 +142,14 @@ public class PlacementBoard extends TilePane {
 	}
 
 	private void mouseOutPlacingShips(MouseEvent e, int shipSize) {
-		//The following logic was used before implementing the clearAll method. Just leaving it commented out for now.
-		
-//		BoardTile current = (BoardTile) e.getSource();
-//		int i = current.getArrayX();
-//		int j = current.getArrayY();
 
-//		if (!rotated) {
-//		//Clear entire row
-//		for(int k=0; k<seaScape[0].length; k++){
-//			seaScape[i][k].setFill(Color.TRANSPARENT);
-//		}
-//		} else {
-//			//Rotated-- clear entire column
-//			for(int k=0; k<seaScape.length; k++){
-//				seaScape[k][j].setFill(Color.TRANSPARENT);
-//			}
-//			
-//		}
 		
 		clearAll();
 	}
 
 	private void mouseInPlacingShips(MouseEvent e, int shipSize) {
 		BoardTile current = (BoardTile) e.getSource();
-//		c.setOnMouseExited(e -> mouseOutPlacingShips(e, shipSize));
+
 		
 		
 		int maxTile = seaScape[0].length - shipSize;

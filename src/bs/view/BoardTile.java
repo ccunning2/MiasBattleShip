@@ -44,9 +44,7 @@ public class BoardTile extends Rectangle {
 		this.setArrayY(y);
 		
 		
-//		EventHandler<MouseEvent> MouseHandle = e -> this.setFill(Color.RED);
-		//Lets play with events
-//		this.addEventHandler(MouseEvent.MOUSE_ENTERED, MouseHandle);
+
 		
 		
 	}
