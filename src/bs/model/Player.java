@@ -2,17 +2,19 @@ package bs.model;
 
 import java.util.ArrayList;
 
-import bs.view.Board;
+import bs.view.PlacementBoard;
+import bs.view.PlayingBoard;
 
 
 //Each player will have a board and some ships
 public class Player {
-	private final Board board;
+	private final PlacementBoard placementBoard;
+	private final PlayingBoard playingBoard = null;
 	private ArrayList<Ship> ships;
 	
 	
 	public Player() {
-		this.board = new Board(this);
+		this.placementBoard = new PlacementBoard(this);
 		this.ships = new ArrayList<>();
 	}
 	
@@ -25,8 +27,8 @@ public class Player {
 	
 
 
-	public Board getBoard() {
-		return board;
+	public PlacementBoard getBoard() {
+		return placementBoard;
 	}
 	
 	public void addShip(Ship ship) {

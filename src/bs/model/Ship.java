@@ -26,7 +26,7 @@ public class Ship {
 			}
 		}
 		for(BoardTile t: tiles){
-			t.setShip(true);
+			t.setShipPiece(true);
 		}
 		this.tiles = tiles;
 	}
