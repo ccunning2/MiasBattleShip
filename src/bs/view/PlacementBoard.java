@@ -51,7 +51,9 @@ public class PlacementBoard extends TilePane {
 				this.getChildren().add(seaScape[i][j]);
 			}
 		}
-		this.setStyle("-fx-background-image: url('resources/images/ship.jpg');");
+		
+		//USS Lake Erie. Don't Give Up The Ship!
+		this.setStyle("-fx-background-image: url('Resources/images/ship.jpg');");
 
 		
 	}

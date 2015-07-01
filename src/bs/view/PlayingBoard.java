@@ -31,7 +31,7 @@ public class PlayingBoard extends TilePane {
 				this.getChildren().add(seaScape[i][j]);
 			}
 		}
-		this.setStyle("-fx-background-image: url('resources/images/ship.jpg');");
+		this.setStyle("-fx-background-image: url('Resources/images/ship.jpg');");
 		
 	}
 
