@@ -1,4 +1,4 @@
-package bs.model;
+package battleship.model;
 
 /**
  * Exception to be thrown in ship creation

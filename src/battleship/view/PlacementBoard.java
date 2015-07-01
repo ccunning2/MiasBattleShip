@@ -1,18 +1,18 @@
-package bs.view;
+package battleship.view;
 
 
 import java.util.ArrayList;
 
+import battleship.controller.Main;
+import battleship.model.Player;
+import battleship.model.Ship;
+import battleship.model.ShipCreationException;
 import javafx.geometry.Pos;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.TilePane;
 import javafx.scene.paint.Color;
-import bs.controller.Main;
-import bs.model.Player;
-import bs.model.Ship;
-import bs.model.ShipCreationException;
 /**
  * Creates a board. Size is 520x520
  * @author cameroncunning1

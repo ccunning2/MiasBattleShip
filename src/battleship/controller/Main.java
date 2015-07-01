@@ -1,10 +1,10 @@
-package bs.controller;
+package battleship.controller;
 
 import java.util.ArrayList;
 
-import bs.model.Player;
-import bs.view.PlacementBoard;
-import bs.view.PlayingBoard;
+import battleship.model.Player;
+import battleship.view.PlacementBoard;
+import battleship.view.PlayingBoard;
 import javafx.application.Application;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;

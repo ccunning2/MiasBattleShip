@@ -1,6 +1,6 @@
-package bs.view;
+package battleship.view;
 
-import bs.model.Ship;
+import battleship.model.Ship;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 

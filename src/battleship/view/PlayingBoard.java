@@ -1,8 +1,8 @@
-package bs.view;
+package battleship.view;
 
-import bs.controller.Main;
-import bs.model.Player;
-import bs.model.Ship;
+import battleship.controller.Main;
+import battleship.model.Player;
+import battleship.model.Ship;
 import javafx.geometry.Pos;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.TilePane;

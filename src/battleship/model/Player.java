@@ -1,9 +1,9 @@
-package bs.model;
+package battleship.model;
 
 import java.util.ArrayList;
 
-import bs.view.PlacementBoard;
-import bs.view.PlayingBoard;
+import battleship.view.PlacementBoard;
+import battleship.view.PlayingBoard;
 
 
 //Each player will have a board and some ships

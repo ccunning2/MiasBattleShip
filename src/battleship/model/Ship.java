@@ -1,8 +1,8 @@
-package bs.model;
+package battleship.model;
 
 import java.util.ArrayList;
 
-import bs.view.BoardTile;
+import battleship.view.BoardTile;
 
 public class Ship {
 	private boolean afloat;
